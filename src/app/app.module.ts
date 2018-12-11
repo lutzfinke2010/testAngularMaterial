@@ -15,12 +15,17 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatButtonModule} from '@angular/material/button';
 import { MenuComponent } from './menu/menu.component';
 import { GameCardComponent } from './game-card/game-card.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { PaypalButtonComponent } from './paypal-button/paypal-button.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    GameCardComponent
+    GameCardComponent,
+    PaypalButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +37,11 @@ import { GameCardComponent } from './game-card/game-card.component';
     FlexLayoutModule,
     MatCardModule,
     MatGridListModule,
-    MatButtonModule
+    MatButtonModule,
+    NgxPayPalModule,
+    MatCheckboxModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     MatSidenavModule,

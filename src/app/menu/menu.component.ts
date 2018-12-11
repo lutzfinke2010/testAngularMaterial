@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {GlobalSettings} from '../Global';
+import {GlobalSettings} from '../GlobalSettings';
 import {$} from 'protractor';
 
 @Component({

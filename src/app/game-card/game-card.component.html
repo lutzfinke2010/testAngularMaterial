@@ -7,14 +7,28 @@
   <img mat-card-image src="{{element.link}}"
        alt="Photo of a Shiba Inu">
   <mat-card-content>
-    <p class="text-primary" id="collapser{{element.name}}" class="collapse">
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
-    </p>
+    <div id="collapser{{element.name}}" class="collapse">
+      <p class="text-primary">
+        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+      </p>
+      <section class="example-section">
+        <mat-checkbox class="example-margin" [(ngModel)]="sektorA">Sektor A</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="sektorB">Sektor B</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="sektorC">Sektor C</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="sektorD">Sektor D</mat-checkbox>
+      </section>
+      <p class="text-info" *ngIf="getKosten() > 0">
+          Kosten: {{getKosten()}} €
+      </p>
+    </div>
   </mat-card-content>
   <mat-card-actions>
-    <a mat-button href="#collapser{{element.name}}" data-toggle="collapse">SHOW MORE</a>
-    <button mat-button>SHARE</button>
+    <div class="row">
+      <a class="col-xs-2" mat-button href="#collapser{{element.name}}" data-toggle="collapse">SHOW MORE</a>
+      <button class="col-xs-2" mat-button>SHARE</button>
+      <app-paypal-button class="col-xs-2" [kosten]="getKosten()"></app-paypal-button>
+    </div>
   </mat-card-actions>
 </mat-card>

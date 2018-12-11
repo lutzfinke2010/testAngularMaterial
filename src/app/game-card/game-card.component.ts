@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {GameCardElement} from '../models/gamecardelement';
+import {GlobalSettings} from '../GlobalSettings';
 
 @Component({
   selector: 'app-game-card',
@@ -8,7 +9,13 @@ import {GameCardElement} from '../models/gamecardelement';
 })
 export class GameCardComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
+
+  sektorA = false;
+  sektorB = false;
+  sektorC = false;
+  sektorD = false;
 
   @Input()
   public element: GameCardElement;
@@ -16,4 +23,20 @@ export class GameCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  getKosten(): number {
+    let kosten = 0;
+    if (this.sektorA) {
+      kosten += GlobalSettings.KostenProSektor;
+    }
+    if (this.sektorB) {
+      kosten += GlobalSettings.KostenProSektor;
+    }
+    if (this.sektorC) {
+      kosten += GlobalSettings.KostenProSektor;
+    }
+    if (this.sektorD) {
+      kosten += GlobalSettings.KostenProSektor;
+    }
+    return kosten;
+  }
 }
