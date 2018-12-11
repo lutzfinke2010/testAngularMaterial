@@ -19,13 +19,17 @@ import { NgxPayPalModule } from 'ngx-paypal';
 import { PaypalButtonComponent } from './paypal-button/paypal-button.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {OAuthModule} from 'angular-oauth2-oidc';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     GameCardComponent,
-    PaypalButtonComponent
+    PaypalButtonComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +46,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatCheckboxModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    OAuthModule.forRoot()
   ],
   exports: [
     MatSidenavModule,
