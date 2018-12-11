@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {GameCardElement} from './models/gamecardelement';
 
 @Component({
   selector: 'app-root',
@@ -6,20 +7,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'testAngularMaterial';
-  isClosed = true;
-  list = [
+  list: GameCardElement[] = [
     {
-      hame: 'Hallo'
+      name: 'Hallo',
+      link: 'https://material.angular.io/assets/img/examples/shiba2.jpg'
     },
     {
-      hame: 'Wer'
+      name: 'Wer',
+      link: 'https://material.angular.io/assets/img/examples/shiba1.jpg'
     },
     {
-      hame: 'bist'
+      name: 'bist',
+      link: 'https://material.angular.io/assets/img/examples/shiba2.jpg'
     },
     {
-      hame: 'du!'
+      name: 'du!',
+      link: 'https://material.angular.io/assets/img/examples/shiba1.jpg'
     }
   ];
 }

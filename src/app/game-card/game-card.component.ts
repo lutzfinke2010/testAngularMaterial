@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {GameCardElement} from '../models/gamecardelement';
 
 @Component({
   selector: 'app-game-card',
@@ -10,7 +11,7 @@ export class GameCardComponent implements OnInit {
   constructor() { }
 
   @Input()
-  public element: any;
+  public element: GameCardElement;
 
   ngOnInit() {
   }
