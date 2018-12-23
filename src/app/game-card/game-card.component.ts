@@ -21,6 +21,7 @@ export class GameCardComponent implements OnInit {
   public element: GameCardElement;
 
   ngOnInit() {
+    console.log('element: ', this.element);
   }
 
   getKosten(): number {

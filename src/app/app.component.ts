@@ -7,7 +7,7 @@ import {GameCardElement} from './models/gamecardelement';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  list: GameCardElement[] = [
+  public list: GameCardElement[] = [
     {
       name: 'Hallo',
       link: 'https://material.angular.io/assets/img/examples/shiba2.jpg'
@@ -25,4 +25,5 @@ export class AppComponent {
       link: 'https://material.angular.io/assets/img/examples/shiba1.jpg'
     }
   ];
+
 }

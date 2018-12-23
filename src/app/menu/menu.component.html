@@ -9,8 +9,11 @@
     <!--Menue der collapsed wird-->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item" *ngFor="let menue of menueIds">
-          <a class="nav-link" href="#" id="{{menue}}" (click)="setCheckedMenueItem(menue)">{{menue}}</a>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/options">Options</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/games">Spiele</a>
         </li>
       </ul>
       <ul class="navbar-nav">
