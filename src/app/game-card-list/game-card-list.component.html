@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6" *ngFor="let element of list">
+      <app-game-card [element]="element"></app-game-card>
+    </div>
+  </div>
+</div>
+<button >Load</button>
+
+<button (click)="load()" mat-button>Load</button>
