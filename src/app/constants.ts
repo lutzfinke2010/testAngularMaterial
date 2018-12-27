@@ -5,10 +5,10 @@ import {environment} from '../environments/environment';
 export class Constants {
   public static readonly ETAG_CACHE_LIFETIME = 120000;
   public static readonly DEFAULT_TENANT = 'guest';
-  public static readonly API_SERVER_URL_LOCAL = `http://localhost:9123/api/v1/tenants/${Constants.DEFAULT_TENANT}`;
+  public static readonly API_SERVER_URL_LOCAL = `http://185.162.251.243:9123/api/v1/tenants/${Constants.DEFAULT_TENANT}`;
   public static readonly API_SERVER_URL_PAAS = `http://185.162.251.243:9123/api/v1/tenants/${Constants.DEFAULT_TENANT}`;
   //public static readonly API_SERVER_URL_PAAS  = 'https://jee7-todo-svc-postgres.pcfapps.dev.datev.de';
-  public static readonly API_BASE_URL_LOCAL = `http://localhost:9123/api/v1/tenants/${Constants.DEFAULT_TENANT}`;
+  public static readonly API_BASE_URL_LOCAL = `http://185.162.251.243:9123/api/v1/tenants/${Constants.DEFAULT_TENANT}`;
   public static readonly API_BASE_URL_PAAS = `http://185.162.251.243:9123/api/v1/tenants/${Constants.DEFAULT_TENANT}`;
   //public static readonly API_BASE_URL_PAAS    = `https://jee7-todo-svc-postgres.pcfapps.dev.datev.de/api/v1/tenants/${Constants.DEFAULT_TENANT}`;
 }
