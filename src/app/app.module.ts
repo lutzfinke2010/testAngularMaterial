@@ -20,6 +20,8 @@ import {AppRoutingModule} from './app.routing.module';
 import {RblgameService} from './service/rblgame.service';
 import {HttpClientModule} from '@angular/common/http';
 import {API_SERVER_URL_RBL, apiServerUrlFactoryRBL, BASE_URL_RBL, baseUrlFactoryRBL} from './constants';
+import {WebsocketService} from './websocket.service';
+import {ChatService} from './chatservice.service';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,10 @@ import {API_SERVER_URL_RBL, apiServerUrlFactoryRBL, BASE_URL_RBL, baseUrlFactory
   providers: [
     {provide: BASE_URL_RBL, useFactory: baseUrlFactoryRBL},
     {provide: API_SERVER_URL_RBL, useFactory: apiServerUrlFactoryRBL},
-    RblgameService],
+    RblgameService,
+    ChatService,
+    WebsocketService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
