@@ -2,6 +2,9 @@ import {Component} from '@angular/core';
 import {GameCardElement} from './models/gamecardelement';
 import {WebsocketService} from './websocket.service';
 import {ChatService} from './chatservice.service';
+import * as Stomp from 'stompjs';
+import * as SockJS from 'sockjs-client';
+import {RBLGames} from './models/rblgame';
 
 @Component({
   selector: 'app-root',
@@ -29,26 +32,63 @@ export class AppComponent {
       link: 'https://material.angular.io/assets/img/examples/shiba1.jpg'
     }
   ];
+  title = 'JavaSampleApproach';
+  description = 'Angular-WebSocket Demo';
 
-  constructor(private chatService: ChatService) {
-    chatService.messages.subscribe(msg => {
-      console.log('Response from websocket: ' + msg.author);
-    });
+  greetings: RBLGames[] = [];
+  disabled: boolean;
+  name: string;
+  private stompClient = null;
 
-    setTimeout(() => {
-      this.sendMsg();
-    }, 3000);
+  constructor() {
+    this.disabled = true;
   }
 
-  private message = {
-    author: 'tutorialedge',
-    message: 'this is a test message'
-  };
+  setConnected(connected: boolean) {
+    this.disabled = !connected;
 
-  sendMsg() {
-    console.log('new message from client to websocket: ', this.message);
-    this.chatService.messages.next(this.message);
-    this.message.message = '';
+    if (connected) {
+      this.greetings = [];
+    }
+  }
+
+  connect() {
+    const socket = new SockJS('http://localhost:9123/websocket-example');
+    this.stompClient = Stomp.over(socket);
+
+    const _this = this;
+    this.stompClient.connect({}, function (frame) {
+      _this.setConnected(true);
+      console.log('Connected: ' + frame);
+
+      _this.stompClient.subscribe('/topic/user', function (hello) {
+        console.log('hello:', hello);
+        console.log('hello.body:', hello.body);
+        _this.showGreeting(JSON.parse(hello.body).content);
+      });
+    });
+  }
+
+  disconnect() {
+    if (this.stompClient != null) {
+      this.stompClient.disconnect();
+    }
+
+    this.setConnected(false);
+    console.log('Disconnected!');
+  }
+
+  sendName() {
+    this.stompClient.send(
+      '/jsa/hello',
+      {},
+      JSON.stringify({ 'name': this.name })
+    );
+  }
+
+  showGreeting(message) {
+    console.log('showGreeting: ', message);
+    this.greetings.push(message);
   }
 
 
