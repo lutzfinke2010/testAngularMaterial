@@ -1,6 +1,6 @@
 {
-  "name": "test-angular-material",
-  "version": "0.0.0",
+  "name": "rbl-ticket-search",
+  "version": "0.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
