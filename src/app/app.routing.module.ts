@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {GameCardComponent} from './game-card/game-card.component';
 import {ServerOptionsComponent} from './server-options/server-options.component';
 import {GameCardListComponent} from './game-card-list/game-card-list.component';
+import {TicketAlertComponent} from './ticket-alert/ticket-alert.component';
 
 export const APP_ROUTES: Routes = [
   {
@@ -17,6 +18,10 @@ export const APP_ROUTES: Routes = [
   {
     path: 'options',
     component: ServerOptionsComponent
+  },
+  {
+    path: 'ticketalert',
+    component: TicketAlertComponent
   }
 ];
 

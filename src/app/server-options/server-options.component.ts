@@ -17,8 +17,8 @@ export class ServerOptionsComponent implements OnInit {
   }
 
   public callStartService() {
-    this.service.startServer().then((serverstatus) => {
-      this.status = serverstatus;
+    this.service.startServer().then((serverstatus: any) => {
+      this.status = serverstatus.status;
       console.log('status:', serverstatus);
     }).catch((error) => {
       console.log('error:', error);
@@ -27,8 +27,8 @@ export class ServerOptionsComponent implements OnInit {
   }
 
   public callStopService() {
-    this.service.stopServer().then((serverstatus) => {
-      this.status = serverstatus;
+    this.service.stopServer().then((serverstatus: any) => {
+      this.status = serverstatus.status;
       console.log('status:', serverstatus);
     }).catch((error) => {
       console.log('error:', error);

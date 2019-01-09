@@ -22,6 +22,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {API_SERVER_URL_RBL, apiServerUrlFactoryRBL, BASE_URL_RBL, baseUrlFactoryRBL} from './constants';
 import {WebsocketService} from './websocket.service';
 import {ChatService} from './chatservice.service';
+import {TicketAlertComponent} from './ticket-alert/ticket-alert.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {ChatService} from './chatservice.service';
     GameCardComponent,
     PaypalButtonComponent,
     ServerOptionsComponent,
-    GameCardListComponent
+    GameCardListComponent,
+    TicketAlertComponent
   ],
   imports: [
     BrowserModule,
