@@ -8,6 +8,8 @@ import {Gameverlauf} from '../models/gameverlauf';
 @Injectable()
 export class RblgameService {
 
+  public version = '0.0';
+
   readonly apiPath: string;
   readonly MODULE_ID_FOR_ETAGS = 'INVENTORYTROUBLE';
 

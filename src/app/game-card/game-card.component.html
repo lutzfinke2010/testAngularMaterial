@@ -27,7 +27,7 @@
   <mat-card-actions>
     <div class="row">
       <a class="col-xs-2" mat-button href="#collapser{{element.name}}" data-toggle="collapse">SHOW MORE</a>
-      <button class="col-xs-2" mat-button>SHARE</button>
+      <button class="col-xs-2" (click)="sound()" mat-button>SHARE</button>
       <app-paypal-button class="col-xs-2" [kosten]="getKosten()"></app-paypal-button>
     </div>
   </mat-card-actions>

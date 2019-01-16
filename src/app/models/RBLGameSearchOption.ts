@@ -1,13 +1,15 @@
-import {RBLSitzplatz} from "./rblsitzplatz";
-import {RBLRule} from "./RBLRule";
+import {RBLSitzplatz} from './rblsitzplatz';
+import {RBLRule} from './RBLRule';
+import {RBLGames} from './rblgame';
 
-export class RBLGameSearchOptionEntity implements RBLGameSearchOption{
+export class RBLGameSearchOptionEntity implements RBLGameSearchOption {
   constructor(public name: string,
-              public rules: RBLRule[]){
+              public rules: RBLRule[]) {
   }
 }
 
-export interface RBLGameSearchOption{
+export interface RBLGameSearchOption {
   name: string,
-  rules: RBLRule[]
+  rules: RBLRule[];
+
 }

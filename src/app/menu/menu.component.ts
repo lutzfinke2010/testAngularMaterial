@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {GlobalSettings} from '../GlobalSettings';
 import {$} from 'protractor';
+import {RblgameService} from '../service/rblgame.service';
 
 @Component({
   selector: 'app-menu',
@@ -9,7 +10,7 @@ import {$} from 'protractor';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() {
+  constructor(private service: RblgameService) {
   }
 
   private menueIds = [

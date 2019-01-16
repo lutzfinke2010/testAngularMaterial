@@ -40,4 +40,5 @@ export class GameCardComponent implements OnInit {
     }
     return kosten;
   }
+
 }
