@@ -8,7 +8,7 @@ import {TicketAlertComponent} from './ticket-alert/ticket-alert.component';
 export const APP_ROUTES: Routes = [
   {
     path : '',
-    redirectTo: 'games',
+    redirectTo: 'ticketalert',
     pathMatch: 'full'
   },
   {
