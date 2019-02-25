@@ -23,6 +23,8 @@ import {API_SERVER_URL_RBL, apiServerUrlFactoryRBL, BASE_URL_RBL, baseUrlFactory
 import {WebsocketService} from './websocket.service';
 import {ChatService} from './chatservice.service';
 import {TicketAlertComponent} from './ticket-alert/ticket-alert.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import {TicketAlertComponent} from './ticket-alert/ticket-alert.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   exports: [
     MatSidenavModule,

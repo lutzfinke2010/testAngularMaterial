@@ -1,0 +1,87 @@
+<div class="container">
+  <section class="content">
+    <div class="card" style="margin-top: 5px">
+      <div class="card-header">
+        {{getDateFromServer()}}
+        <span class="badge badge-success" style="margin:2px;" *ngIf="status === true">Server started</span>
+        <span class="badge badge-success" style="margin:2px;" *ngIf="statusWebSocket === true">WS connected</span>
+        <span class="badge badge-danger" style="margin:2px;" *ngIf="status === false">Server stopped</span>
+        <span class="badge badge-danger" style="margin:2px;" *ngIf="statusWebSocket === false">WS disconnected</span>
+        <button type="button" class="btn btn-outline-primary btn-sm" *ngIf="!status" (click)="callStartService()">Start</button>
+        <button type="button" class="btn btn-outline-primary btn-sm" *ngIf="status" (click)="callStopService()">Stop</button>
+        <button type="button" class="btn btn-outline-primary btn-sm" *ngIf="disabled" (click)="connect()">Connect</button>
+        <button type="button" class="btn btn-outline-primary btn-sm" *ngIf="!disabled" (click)="disconnect()">Disconnect</button>
+        <button type="button" class="btn btn-outline-success btn-sm" (click)="clearList()">Clear</button>
+        <button type="button" class="btn btn-outline-success btn-sm" (click)="silence()">Stille</button>
+      </div>
+      <div class="card-body">
+        <div class="card-text">
+        <p *ngIf="waitroomcounter.counter > 0">Warteraum: {{waitroomcounter.counter}}</p>
+        </div>
+        <div id="accordion">
+          <div class="card" style="margin-top: 5px">
+            <div class="card-header">
+              Suchergebnisse
+            </div>
+            <div class="card-body">
+
+              <div class="list-group col-lg-12">
+                <div class="col-lg-12" *ngFor="let game of rblRuleResults">
+                  <a href="{{game.link}}" target="_blank" class="list-group-item list-group-item-action">
+                    <h3 class="col-lg-12">
+                      {{game.Name}}
+                    </h3>
+                    <p class="col-lg-6 col-sm-12">
+                      {{game.sitzplatz.kategorie}} {{game.Info}}
+                    </p>
+                    <p class="col-lg-4 col-sm-12">
+                      {{game.sitzplatz.bereich}} {{game.sitzplatz.reihe}} {{game.sitzplatz.sitz}}
+                    </p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingThree">
+        <h5 class="mb-0">
+          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Games
+          </button>
+        </h5>
+      </div>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="card-body">
+          <div *ngFor="let option of searchOptionConatiner.scanedGames">
+            <a href="{{option.link}}" target="_blank">{{option.name}} {{option.plaetze.length}} freie Plätze</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h5 class="mb-0">
+          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            SearchOptions
+          </button>
+        </h5>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="card-body">
+          <div *ngFor="let option of searchOptionConatiner.searchOptions">
+            {{option.name}}
+            <div *ngFor="let rule of option.rules">
+              {{rule.name}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+

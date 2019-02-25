@@ -10,7 +10,7 @@ import {RblgameService} from '../service/rblgame.service';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private service: RblgameService) {
+  constructor(public service: RblgameService) {
   }
 
   private menueIds = [
