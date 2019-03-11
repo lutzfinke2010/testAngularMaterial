@@ -19,7 +19,7 @@ export class TicketAlertComponent implements OnInit {
   title = 'Ticket Ale1rt';
   description = 'Ticketalert für alle aktiven Spiele';
 
-  private version = '2.6';
+  private version = '3.0';
 
   rblRuleResults: RBLRuleResult[] = [];
   disabled: boolean;

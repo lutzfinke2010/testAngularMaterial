@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs/Rx';
 import { WebsocketService } from './websocket.service';
-import {RBLGames} from './models/rblgame';
+import {RBLGames} from './models/rblgames';
 
 const CHAT_URL = 'ws://echo.websocket.org/';
 

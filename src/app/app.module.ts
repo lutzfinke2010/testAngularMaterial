@@ -25,6 +25,7 @@ import {ChatService} from './chatservice.service';
 import {TicketAlertComponent} from './ticket-alert/ticket-alert.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import {RblSearchOptionsService} from './service/rblgame.searchoptions';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { environment } from '../environments/environment';
     {provide: BASE_URL_RBL, useFactory: baseUrlFactoryRBL},
     {provide: API_SERVER_URL_RBL, useFactory: apiServerUrlFactoryRBL},
     RblgameService,
+    RblSearchOptionsService,
     ChatService,
     WebsocketService
   ],

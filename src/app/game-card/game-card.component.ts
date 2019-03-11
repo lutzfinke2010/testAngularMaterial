@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {GlobalSettings} from '../GlobalSettings';
-import {RBLGames} from '../models/rblgame';
+import {RBLGames} from '../models/rblgames';
 import {RblgameService} from '../service/rblgame.service';
 import {RBLGameToSearch} from '../models/RBLGameToSearch';
 
@@ -9,12 +8,14 @@ import {RBLGameToSearch} from '../models/RBLGameToSearch';
   templateUrl: './game-card.component.html',
   styleUrls: ['./game-card.component.css']
 })
+
 export class GameCardComponent implements OnInit {
 
   sektorA = false;
   sektorB = false;
   sektorC = false;
   sektorD = false;
+
   @Input()
   public element: RBLGames;
 
@@ -23,23 +24,22 @@ export class GameCardComponent implements OnInit {
 
   ngOnInit() {
     console.log('element: ', this.element);
-  }
-
-  getKosten(): number {
-    let kosten = 0;
-    if (this.sektorA) {
-      kosten += GlobalSettings.KostenProSektor;
+    if (this.element && this.element.sektoren) {
+      for (let i = 0; i < this.element.sektoren.length; i++) {
+        if (this.element.sektoren[i] === 'Sektor A') {
+          this.sektorA = true;
+        }
+        if (this.element.sektoren[i] === 'Sektor B') {
+          this.sektorB = true;
+        }
+        if (this.element.sektoren[i] === 'Sektor C') {
+          this.sektorC = true;
+        }
+        if (this.element.sektoren[i] === 'Sektor D') {
+          this.sektorD = true;
+        }
+      }
     }
-    if (this.sektorB) {
-      kosten += GlobalSettings.KostenProSektor;
-    }
-    if (this.sektorC) {
-      kosten += GlobalSettings.KostenProSektor;
-    }
-    if (this.sektorD) {
-      kosten += GlobalSettings.KostenProSektor;
-    }
-    return kosten;
   }
 
 

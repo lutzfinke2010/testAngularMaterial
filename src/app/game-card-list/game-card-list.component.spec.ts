@@ -1,25 +1,42 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { GameCardListComponent } from './game-card-list.component';
+import {GameCardListComponent} from './game-card-list.component';
 
 describe('GameCardListComponent', () => {
   let component: GameCardListComponent;
-  let fixture: ComponentFixture<GameCardListComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ GameCardListComponent ]
-    })
-    .compileComponents();
-  }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GameCardListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = new GameCardListComponent(null, null);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+
+  describe('addsearchOptionsToRblGames', () => {
+
+    it('beide listen leer erwarte leere liste', () => {
+      component.addsearchOptionsToRblGames();
+
+      expect(component.list.length).toBe(0);
+      expect(component.searchOptionList.length).toBe(0);
+    });
+
+    it('nur searchoptions leer erwarte ungeänderte liste, sektoren sind leer', () => {
+      component.addsearchOptionsToRblGames();
+      component.list.push(
+        {
+          name: 'hallo',
+          link: 'www.maxya.de',
+          id: 1,
+          plaetze: [],
+          countSitzplaetze: 0,
+          countBBLock: 0,
+          countDBLock: 0,
+          startdate: new Date(),
+          sektoren: []
+        }
+      );
+
+      expect(component.list.length).toBe(1);
+      expect(component.list[0].sektoren.length).toBe(1);
+      expect(component.searchOptionList.length).toBe(0);
+    });
+
   });
 });

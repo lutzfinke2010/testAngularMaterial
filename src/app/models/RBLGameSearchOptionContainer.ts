@@ -1,5 +1,5 @@
 import {RBLGameSearchOption} from './RBLGameSearchOption';
-import {RBLGames} from './rblgame';
+import {RBLGames} from './rblgames';
 
 export class RBLSearchOptionContainerEntity implements RBLSearchOptionContainer {
   constructor(public searchOptions: RBLGameSearchOption[],

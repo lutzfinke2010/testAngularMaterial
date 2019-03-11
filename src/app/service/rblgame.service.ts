@@ -1,7 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {API_SERVER_URL_RBL, BASE_URL_RBL} from '../constants';
-import {RBLGames} from '../models/rblgame';
+import {RBLGames} from '../models/rblgames';
 import {Gameverlauf} from '../models/gameverlauf';
 import {RBLGameToSearch} from '../models/RBLGameToSearch';
 

@@ -8,7 +8,9 @@ export class RBLGamesEntity implements RBLGames {
               public countSitzplaetze: number,
               public countBBLock: number,
               public countDBLock: number,
-              public startdate: Date) {
+              public startdate: Date,
+              public sektoren: string[] = [],
+              public imagePath: string) {
   }
 }
 
@@ -21,4 +23,6 @@ export interface RBLGames {
   countBBLock: number;
   countDBLock: number;
   startdate: Date;
+  sektoren?: string[];
+  imagePath?: string;
 }
