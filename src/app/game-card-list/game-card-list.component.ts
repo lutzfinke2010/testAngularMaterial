@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {GameCardElement} from '../models/gamecardelement';
+import {RblgameService} from '../service/rblgame.service';
+import {RBLGames} from '../models/rblgame';
 
 @Component({
   selector: 'app-game-card-list',
@@ -8,69 +9,20 @@ import {GameCardElement} from '../models/gamecardelement';
 })
 export class GameCardListComponent implements OnInit {
 
-  public list: GameCardElement[] = [
-    {
-      name: 'Hallo',
-      link: 'https://material.angular.io/assets/img/examples/shiba2.jpg'
-    },
-    {
-      name: 'Wer',
-      link: 'https://material.angular.io/assets/img/examples/shiba1.jpg'
-    },
-    {
-      name: 'bist',
-      link: 'https://material.angular.io/assets/img/examples/shiba2.jpg'
-    },
-    {
-      name: 'du!',
-      link: 'https://material.angular.io/assets/img/examples/shiba1.jpg'
-    }
-  ];
+  public list: RBLGames[];
 
-  constructor() {
+  constructor(private service: RblgameService) {
+    this.list = [];
   }
 
   ngOnInit() {
-    this.list = [
-      {
-        name: 'Hallo',
-        link: 'https://material.angular.io/assets/img/examples/shiba2.jpg'
-      },
-      {
-        name: 'Wer',
-        link: 'https://material.angular.io/assets/img/examples/shiba1.jpg'
-      },
-      {
-        name: 'bist',
-        link: 'https://material.angular.io/assets/img/examples/shiba2.jpg'
-      },
-      {
-        name: 'du!',
-        link: 'https://material.angular.io/assets/img/examples/shiba1.jpg'
-      }
-    ];
+    this.list = [];
+    this.service.getRBLGames().then((games: RBLGames[]) => {
+      this.list = games;
+    }).catch((error) => {
+      console.log(error);
+    });
   }
 
-  public load() {
-    console.log('List:', this.list);
-    this.list = [
-      {
-        name: 'Hallo',
-        link: 'https://material.angular.io/assets/img/examples/shiba2.jpg'
-      },
-      {
-        name: 'Wer',
-        link: 'https://material.angular.io/assets/img/examples/shiba1.jpg'
-      },
-      {
-        name: 'bist',
-        link: 'https://material.angular.io/assets/img/examples/shiba2.jpg'
-      },
-      {
-        name: 'du!',
-        link: 'https://material.angular.io/assets/img/examples/shiba1.jpg'
-      }
-    ];
-  }
 
 }

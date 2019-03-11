@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {API_SERVER_URL_RBL, BASE_URL_RBL} from '../constants';
 import {RBLGames} from '../models/rblgame';
 import {Gameverlauf} from '../models/gameverlauf';
+import {RBLGameToSearch} from '../models/RBLGameToSearch';
 
 
 @Injectable()
@@ -34,5 +35,9 @@ export class RblgameService {
 
   public stopServer(): Promise<string> {
     return this.http.get<string>(this.apiBasePath + '/rblschedule/stop').toPromise();
+  }
+
+  public sendSearchOption(rblGameToSearch: RBLGameToSearch) {
+    return this.http.post(this.apiBasePath + '/gametosearch', rblGameToSearch).toPromise();
   }
 }

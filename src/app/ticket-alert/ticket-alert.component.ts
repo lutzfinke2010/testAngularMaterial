@@ -19,7 +19,7 @@ export class TicketAlertComponent implements OnInit {
   title = 'Ticket Ale1rt';
   description = 'Ticketalert für alle aktiven Spiele';
 
-  private version = '2.2';
+  private version = '2.6';
 
   rblRuleResults: RBLRuleResult[] = [];
   disabled: boolean;
@@ -58,7 +58,7 @@ export class TicketAlertComponent implements OnInit {
   }
 
   connect() {
-    // let socket = new SockJS('http://localhost:9123/websocket-example');
+    //let socket = new SockJS('http://localhost:9123/websocket-example');
     let socket = new SockJS('http://185.162.251.243:9123/websocket-example');
 
     this.stompClient = Stomp.over(socket);
@@ -156,6 +156,13 @@ export class TicketAlertComponent implements OnInit {
       return date.toLocaleTimeString();
     }
     return 'kein Datum verfügbar';
+  }
+
+  public getPureDateFromServer(): any {
+    if (this.searchOptionConatiner && this.searchOptionConatiner.date) {
+      return this.searchOptionConatiner.date;
+    }
+    return '';
   }
 
   private setDummyData() {

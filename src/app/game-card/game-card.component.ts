@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {GameCardElement} from '../models/gamecardelement';
 import {GlobalSettings} from '../GlobalSettings';
+import {RBLGames} from '../models/rblgame';
+import {RblgameService} from '../service/rblgame.service';
+import {RBLGameToSearch} from '../models/RBLGameToSearch';
 
 @Component({
   selector: 'app-game-card',
@@ -9,16 +11,15 @@ import {GlobalSettings} from '../GlobalSettings';
 })
 export class GameCardComponent implements OnInit {
 
-  constructor() {
-  }
-
   sektorA = false;
   sektorB = false;
   sektorC = false;
   sektorD = false;
-
   @Input()
-  public element: GameCardElement;
+  public element: RBLGames;
+
+  constructor(public service: RblgameService) {
+  }
 
   ngOnInit() {
     console.log('element: ', this.element);
@@ -41,4 +42,38 @@ export class GameCardComponent implements OnInit {
     return kosten;
   }
 
+
+  public checkValue(sektor: string, game: string) {
+    if (sektor === 'A') {
+      console.log(game + ' ' + sektor, this.sektorA);
+      this.sendData(sektor, game, this.sektorA);
+    }
+    if (sektor === 'B') {
+      console.log(game + ' ' + sektor, this.sektorB);
+      this.sendData(sektor, game, this.sektorB);
+    }
+    if (sektor === 'C') {
+      console.log(game + ' ' + sektor, this.sektorC);
+      this.sendData(sektor, game, this.sektorC);
+    }
+    if (sektor === 'D') {
+      console.log(game + ' ' + sektor, this.sektorD);
+      this.sendData(sektor, game, this.sektorD);
+    }
+  }
+
+  public sendData(sektor: string, game: string, active: boolean) {
+    const rblGameToSearch: RBLGameToSearch = {
+      name: game,
+      sektor: sektor,
+      aktiv: active
+    };
+    this.service.sendSearchOption(rblGameToSearch)
+      .then(() => {
+        console.log('saved', rblGameToSearch);
+      })
+      .catch((error) => {
+        console.log('error:', error);
+      });
+  }
 }
