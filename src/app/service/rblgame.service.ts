@@ -40,4 +40,8 @@ export class RblgameService {
   public sendSearchOption(rblGameToSearch: RBLGameToSearch) {
     return this.http.post(this.apiBasePath + '/gametosearch', rblGameToSearch).toPromise();
   }
+
+  public getLastUserData() {
+    return this.http.get(this.apiBasePath + '/username').toPromise();
+  }
 }

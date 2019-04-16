@@ -1,5 +1,5 @@
 {
-  "name": "rbl-ticket-search",
+  "name": "rblscannerclient",
   "version": "0.1.0",
   "scripts": {
     "ng": "ng",

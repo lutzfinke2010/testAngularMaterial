@@ -26,16 +26,16 @@ export class GameCardComponent implements OnInit {
     console.log('element: ', this.element);
     if (this.element && this.element.sektoren) {
       for (let i = 0; i < this.element.sektoren.length; i++) {
-        if (this.element.sektoren[i] === 'Sektor A') {
+        if (this.element.sektoren[i].startsWith('Sektor A')) {
           this.sektorA = true;
         }
-        if (this.element.sektoren[i] === 'Sektor B') {
+        if (this.element.sektoren[i].startsWith('Sektor B')) {
           this.sektorB = true;
         }
-        if (this.element.sektoren[i] === 'Sektor C') {
+        if (this.element.sektoren[i].startsWith('Sektor C')) {
           this.sektorC = true;
         }
-        if (this.element.sektoren[i] === 'Sektor D') {
+        if (this.element.sektoren[i].startsWith('Sektor D')) {
           this.sektorD = true;
         }
       }

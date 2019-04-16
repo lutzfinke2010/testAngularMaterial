@@ -19,7 +19,7 @@ export class TicketAlertComponent implements OnInit {
   title = 'Ticket Ale1rt';
   description = 'Ticketalert für alle aktiven Spiele';
 
-  private version = '3.0';
+  private version = '3.2';
 
   rblRuleResults: RBLRuleResult[] = [];
   disabled: boolean;
@@ -31,6 +31,8 @@ export class TicketAlertComponent implements OnInit {
   private stompClient = null;
   private audio = new Audio();
   private playingMusic = false;
+
+  public userName: string = 'Paul Meyer';
 
   constructor(private service: RblgameService) {
     this.waitroomcounter = {
@@ -46,6 +48,7 @@ export class TicketAlertComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userName = 'Paul Meyer';
   }
 
   setConnected(connected: boolean) {
@@ -71,6 +74,11 @@ export class TicketAlertComponent implements OnInit {
       });
       _this.stompClient.subscribe('/topic/searchoptions', function (searchoptions) {
         _this.showSearchoptionsResult(JSON.parse(searchoptions.body).content);
+        _this.service.getLastUserData().then((userName: string)=>{
+          _this.userName = userName;
+        }).catch(()=>{
+          _this.userName = 'Fehler';
+        });
       });
       _this.stompClient.subscribe('/topic/waitroomcounter', function (waitroomcounter) {
         _this.showWaitroomCounter(JSON.parse(waitroomcounter.body).content);
